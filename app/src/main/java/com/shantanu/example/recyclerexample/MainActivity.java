@@ -1,12 +1,15 @@
 package com.shantanu.example.recyclerexample;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -15,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     MyListAdapter listAdapter;
     ArrayList<Food> list;
     LinearLayoutManager linearLayoutManager;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        button=(Button)findViewById(R.id.ques3);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this,Main2Activity.class);
+                startActivity(i);
+            }
+        });
         list= new ArrayList();
         list.add(new Food(0,"sandwich","noida"));
         list.add(new Food(0,"sandwich","noida"));
@@ -53,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -102,6 +115,6 @@ public class MainActivity extends AppCompatActivity {
                     listAdapter.notifyDataSetChanged();
                 }
             }
-        },5000);
+        },1000);
     }
 }

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Food> list;
     LinearLayoutManager linearLayoutManager;
     Button button;
+    boolean itShouldLoadMore=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +45,6 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Food(0,"sandwich","noida"));
 
 
-
-        Food[] myListData = new Food[] {
-                new Food(0,"ice cream","jay hind"),
-                new Food(1,"sandwich","jay hind"),
-                new Food(2,"Samosa","jay hind"),
-                new Food(1,"idly","jay hind"),
-                new Food(0,"ice cream1","jay hind"),
-                new Food(1,"ice cream2","jay hind"),
-                new Food(2,"dosa","jay hind"),
-                new Food(0,"cold drink","jay hind"),
-                new Food(0,"coffee","jay hind"),
-
-        };
-
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         MyListAdapter adapter = new MyListAdapter(list);
         linearLayoutManager=new LinearLayoutManager(this);
@@ -79,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                /*
                 int totalItems=linearLayoutManager.getItemCount();
                 int visibleItems=linearLayoutManager.getChildCount();
                 int scrolledOutItems=linearLayoutManager.findFirstVisibleItemPosition();
@@ -88,21 +75,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-        /*
-       // MultiViewTypeAdapter adapter = new MultiViewTypeAdapter(list,this);
-        MyMultipleAdapter myMultipleAdapter=new MyMultipleAdapter(list,this );
-        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
-
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(myMultipleAdapter);
         */
+
+                if (dy > 0) {
+                    if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
+                        if (itShouldLoadMore) {
+                            loadMore();
+                        }
+                    }
+
+                }
+            }});
+
+
     }
-    public void fetchData(){
+    public void loadMore(){
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -117,4 +104,5 @@ public class MainActivity extends AppCompatActivity {
             }
         },1000);
     }
+
 }

@@ -12,6 +12,12 @@ import java.util.ArrayList;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
     private ArrayList<Food> listdata;
+    private  onLoadMoreData mOnLoadMoreListener;
+    private boolean isLoading;
+    private int visibleThreshold = 5;
+    private int lastVisibleItem;
+    private int totalItemCount;
+
 
 
     public MyListAdapter(ArrayList<Food> listdata) {

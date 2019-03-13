@@ -1,5 +1,6 @@
 package com.shantanu.example.recyclerexample;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,19 +10,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
     private ArrayList<Food> listdata;
-    private  onLoadMoreData mOnLoadMoreListener;
-    private boolean isLoading;
-    private int visibleThreshold = 5;
-    private int lastVisibleItem;
-    private int totalItemCount;
 
 
-
-    public MyListAdapter(ArrayList<Food> listdata) {
+    public MyListAdapter(ArrayList<Food> listdata,RecyclerView recyclerView) {
         this.listdata = listdata;
+
+
+
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,6 +46,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         return listdata.size();
     }
 
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView;
@@ -60,4 +60,5 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
         }
     }
+
 }

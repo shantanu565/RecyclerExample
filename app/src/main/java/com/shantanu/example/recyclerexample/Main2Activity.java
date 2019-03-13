@@ -17,12 +17,12 @@ public class Main2Activity extends AppCompatActivity {
 
 
         ArrayList <Food2> list2 = new ArrayList<Food2>();
-        list2.add(new Food2(Food2.ItemType.TEXTIMAGE_TYPE,"Ice cream","noida"));
+        list2.add(new Food2(Food2.ItemType.IMAGE_TYPE,"","noida"));
         list2.add(new Food2(Food2.ItemType.TEXT_TYPE,"Ice cream2","noida"));
-        list2.add(new Food2(Food2.ItemType.IMAGE_TYPE,"Ice cream3","noida"));
+        list2.add(new Food2(Food2.ItemType.IMAGE_TYPE,"","noida"));
         list2.add(new Food2(Food2.ItemType.TEXTIMAGE_TYPE,"Ice cream4","noida"));
-        list2.add(new Food2(Food2.ItemType.TEXTIMAGE_TYPE,"Ice cream3","noida"));
-        list2.add(new Food2(Food2.ItemType.TEXTIMAGE_TYPE,"Ice cream1","noida"));
+        list2.add(new Food2(Food2.ItemType.IMAGE_TYPE,"","noida"));
+        list2.add(new Food2(Food2.ItemType.TEXT_TYPE,"Ice cream1","noida"));
 
 
         MyMultipleAdapter itemArrayAdapter = new MyMultipleAdapter(list2);

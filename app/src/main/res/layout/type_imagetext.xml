@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="hello"
         android:textSize="20sp"
-        android:layout_toRightOf="@id/iv_ti"/>
+        android:layout_toRightOf="@id/iv_ti"
+        android:layout_marginTop="50dp"/>
 
 </RelativeLayout>
